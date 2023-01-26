@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+
+    <TextView
+        android:id="@+id/menu_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
+        android:text="Crea il Menu"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/menu_name_input"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Nome del menu"
+            android:inputType="text"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginRight="8dp" />
+
+        <EditText
+            android:id="@+id/menu_date_input"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Data del menu"
+            android:inputType="date"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginLeft="8dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="53dp"
+        android:layout_marginBottom="16dp"
+        android:orientation="horizontal">
+
+
+        <EditText
+            android:id="@+id/etxt_pm_menu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Crea il tuo menu"
+            android:inputType="text"
+            android:layout_marginBottom="8dp" />
+
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center">
+
+
+
+    <EditText
+        android:id="@+id/etxt_pm_ingredienti"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ingredienti"
+        android:inputType="text"
+        android:layout_marginBottom="8dp" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btn_salva_pm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SALVA" />
+
+    </LinearLayout>
+</LinearLayout>
