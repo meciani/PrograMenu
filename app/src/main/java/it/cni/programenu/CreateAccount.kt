@@ -43,6 +43,10 @@ class CreateAccount : AppCompatActivity() {
         btn_LogIn= findViewById(R.id.btn_login)
         mostra_password = findViewById(R.id.mostra_password)
 
+
+        mAuth = FirebaseAuth.getInstance()
+        myDbRef =FirebaseDatabase.getInstance().reference
+
         mostraPassword(visibilita_password)
         mostra_password!!.setOnClickListener {
             visibilita_password = !visibilita_password
@@ -56,9 +60,9 @@ class CreateAccount : AppCompatActivity() {
                 val email = editxt_email.text.toString()
                 val password = editxt_pass.text.toString()
 
-
-
                 creaAccount(nome,email,password)
+
+
 
             }catch(e:Exception){
                 if (editxt_email.text.toString().equals("") && editxt_pass.text.toString().equals("")) {
@@ -119,7 +123,6 @@ class CreateAccount : AppCompatActivity() {
                     addUtenteToDb(mAuth.currentUser?.uid!!,nome,email)
 
                     val intent = Intent(this,MainActivity::class.java)
-                    intent.putExtra("nome",nome)
                     finish()
                     startActivity(intent)
                 } else {
@@ -145,7 +148,7 @@ class CreateAccount : AppCompatActivity() {
 
     private fun addUtenteToDb(uid:String,nome:String,email: String){
         myDbRef = FirebaseDatabase.getInstance().getReference()
-        myDbRef.child("utente").child(uid).setValue(Utente(uid,nome,email))
+        myDbRef.child("Utente").child(uid).setValue(Utente(uid,nome,email))
     }
 
 

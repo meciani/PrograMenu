@@ -22,7 +22,7 @@ class CreaMenuAdapter (val context : Context, val menuList: ArrayList<Menu>):
         holder.txtData.text = currentMenu.data.toString()
         holder.txtDescrizone.text = currentMenu.descrizione
 
-        holder.itemView.setOnClickListener {
+       /* holder.itemView.setOnClickListener {
 
             val intent = Intent(context,VisualizzaMenu::class.java)
 
@@ -33,7 +33,7 @@ class CreaMenuAdapter (val context : Context, val menuList: ArrayList<Menu>):
 
 
             context.startActivity(intent)
-        }
+        }*/
 
     }
 

@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -18,13 +17,14 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:layout_weight="1.6"
-            android:text="M.Veloce" />
+            android:text="M.Fast" />
 
         <Button
             android:id="@+id/btn_mb"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1.6"
+            android:layout_marginLeft="14dp"
             android:text="M.Base" />
 
         <Button
@@ -32,6 +32,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1.6"
+            android:layout_marginLeft="14dp"
             android:text="M.Sofis" />
 
 
@@ -40,12 +41,12 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="600dp"
         android:layout_margin="16dp"
         app:cardElevation="4dp">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
+            android:id="@+id/crearecyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </androidx.cardview.widget.CardView>
@@ -60,6 +61,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:layout_marginLeft="15dp"
         android:text="crea" />
 
     <Button
@@ -67,6 +69,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
         android:text="Salva" />
 
     </LinearLayout>
