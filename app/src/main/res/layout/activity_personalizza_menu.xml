@@ -24,7 +24,7 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/menu_name_input"
+            android:id="@+id/etxt_pm_nome"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -36,7 +36,7 @@
             android:layout_marginRight="8dp" />
 
         <EditText
-            android:id="@+id/menu_date_input"
+            android:id="@+id/etxt_pm_data"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

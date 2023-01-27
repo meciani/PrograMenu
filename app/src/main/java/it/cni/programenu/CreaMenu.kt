@@ -23,7 +23,7 @@ class CreaMenu : AppCompatActivity() {
     private lateinit var btn_menuV : Button
     private lateinit var btn_menuB : Button
     private lateinit var btn_menuS : Button
-
+    private lateinit var btn_svuota : Button
     private lateinit var recyclerView: RecyclerView
     private lateinit var creaMenuAdapter : CreaMenuAdapter
     private lateinit var menuList : ArrayList<Menu>
@@ -42,6 +42,7 @@ class CreaMenu : AppCompatActivity() {
          btn_menuV = findViewById(R.id.btn_mv)
          btn_menuB = findViewById(R.id.btn_mb)
          btn_menuS = findViewById(R.id.btn_ms)
+         btn_svuota = findViewById(R.id.btn_msvuota)
 
         recyclerView = findViewById(R.id.crearecyclerView)
         menuList = ArrayList()
@@ -63,23 +64,33 @@ class CreaMenu : AppCompatActivity() {
             startActivity(intent)
         }
 
-        btn_salvamenu.setOnClickListener {
-            for(i  in 0 until menuList.size) {
-                val menu = menuList[i]
-                //val menuID = myDbRef.push().key
-                val menuJ = gson.toJson(menu)
-                myDbRef.child("Menu").child(creatorUid!!).push().setValue(menuJ){
-                    error,_ ->
-                    if(error == null){
-                        val intent = Intent(this,MainActivity::class.java)
-                        finish()
-                        startActivity(intent)
-                    }else{
-                        Toast.makeText(this,"Errore"+error,Toast.LENGTH_SHORT).show()
-                    }
-                }
-            }
+        btn_svuota.setOnClickListener{
 
+            menuList.clear()
+            creaMenuAdapter.notifyDataSetChanged()
+
+        }
+
+        btn_salvamenu.setOnClickListener {
+           if(!menuList.isEmpty()) {
+
+               for (i in 0 until menuList.size) {
+                   val menu = menuList[i]
+                   //val menuID = myDbRef.push().key
+                   val menuJ = gson.toJson(menu)
+                   myDbRef.child("Menu").child(creatorUid!!).push().setValue(menuJ) { error, _ ->
+                       if (error == null) {
+                           val intent = Intent(this, MainActivity::class.java)
+                           finish()
+                           startActivity(intent)
+                       } else {
+                           Toast.makeText(this, "Errore" + error, Toast.LENGTH_SHORT).show()
+                       }
+                   }
+               }
+           }else{
+               Toast.makeText(this, "Lista vuota Aggiungere menu", Toast.LENGTH_SHORT).show()
+           }
         }
 
         btn_menuV.setOnClickListener {

@@ -1,5 +1,6 @@
 package it.cni.programenu
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
@@ -44,6 +45,7 @@ class MainActivity : AppCompatActivity() {
 
         myDbRef.child("Menu").child(creatorUid!!)
             .addValueEventListener(object : ValueEventListener{
+
             override fun onDataChange(snapshot: DataSnapshot) {
                 menuList.clear()
                 for (menuSnapshot in snapshot.children){
