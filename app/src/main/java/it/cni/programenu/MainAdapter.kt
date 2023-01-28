@@ -8,11 +8,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class MainAdapter (val context : Context,val menuList: ArrayList<Menu>):
-RecyclerView.Adapter<MainAdapter.MenuViewHolder>(){
+class MainAdapter(val context: Context, val menuList: ArrayList<Menu>) :
+    RecyclerView.Adapter<MainAdapter.MenuViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MenuViewHolder {
-        val view : View = LayoutInflater.from(context).inflate(R.layout.layout_menu,parent,false)
+        val view: View = LayoutInflater.from(context).inflate(R.layout.layout_menu, parent, false)
         return MenuViewHolder(view)
     }
 
@@ -42,7 +42,7 @@ RecyclerView.Adapter<MainAdapter.MenuViewHolder>(){
         return menuList.size
     }
 
-    class MenuViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+    class MenuViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         val txtTitolo = itemView.findViewById<TextView>(R.id.menu_name)
         val txtData = itemView.findViewById<TextView>(R.id.menu_date)
@@ -50,8 +50,6 @@ RecyclerView.Adapter<MainAdapter.MenuViewHolder>(){
 
 
     }
-
-
 
 
 }

@@ -14,15 +14,14 @@ import com.google.gson.Gson
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var btn_creaMe : Button
-    private lateinit var btn_listaSp : Button
-    private lateinit var mainReclyerView : RecyclerView
-    private lateinit var mainAdapter : MainAdapter
-    private lateinit var menuList : ArrayList<Menu>
+    private lateinit var btn_creaMe: Button
+    private lateinit var btn_listaSp: Button
+    private lateinit var btn_svuota: Button
+    private lateinit var mainReclyerView: RecyclerView
+    private lateinit var mainAdapter: MainAdapter
+    private lateinit var menuList: ArrayList<Menu>
     private lateinit var mAuth: FirebaseAuth
-    private lateinit var myDbRef : DatabaseReference
-
-
+    private lateinit var myDbRef: DatabaseReference
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,10 +30,12 @@ class MainActivity : AppCompatActivity() {
 
         btn_creaMe = findViewById(R.id.btn_creaM)
         btn_listaSp = findViewById(R.id.btn_listS)
+        btn_svuota = findViewById(R.id.btn_svuotaM)
         mainReclyerView = findViewById(R.id.menuReciclerView)
         menuList = ArrayList()
-        mainAdapter = MainAdapter(this,menuList)
-        mainReclyerView.layoutManager = LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false)
+        mainAdapter = MainAdapter(this, menuList)
+        mainReclyerView.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         mainReclyerView.adapter = mainAdapter
 
         mAuth = FirebaseAuth.getInstance()
@@ -44,60 +45,63 @@ class MainActivity : AppCompatActivity() {
         val gson = Gson()
 
         myDbRef.child("Menu").child(creatorUid!!)
-            .addValueEventListener(object : ValueEventListener{
+            .addValueEventListener(object : ValueEventListener {
 
-            override fun onDataChange(snapshot: DataSnapshot) {
-                menuList.clear()
-                for (menuSnapshot in snapshot.children){
-                    val menuJson = menuSnapshot.getValue(String::class.java)
-                    val menu = gson.fromJson(menuJson,Menu::class.java)
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    menuList.clear()
+                    for (menuSnapshot in snapshot.children) {
+                        val menuJson = menuSnapshot.getValue(String::class.java)
+                        val menu = gson.fromJson(menuJson, Menu::class.java)
                         menuList.add(menu!!)
+                    }
+                    mainAdapter.notifyDataSetChanged()
                 }
-                mainAdapter.notifyDataSetChanged()
-            }
 
-            override fun onCancelled(error: DatabaseError) {
+                override fun onCancelled(error: DatabaseError) {
 
-            }
+                }
 
-        })
+            })
 
         btn_creaMe.setOnClickListener {
-            val intent = Intent(this,CreaMenu::class.java)
+            val intent = Intent(this, CreaMenu::class.java)
             finish()
             startActivity(intent)
         }
 
         btn_listaSp.setOnClickListener {
-            val intent = Intent(this,ListaSpesa::class.java)
+            val intent = Intent(this, ListaSpesa::class.java)
             finish()
             startActivity(intent)
         }
 
+        btn_svuota.setOnClickListener {
+
+            menuList.clear()
+            myDbRef.child("Menu").child(creatorUid!!).removeValue()
+            mainAdapter.notifyDataSetChanged()
+
+        }
 
 
     }
 
     override fun onCreateOptionsMenu(menu: android.view.Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu,menu)
+        menuInflater.inflate(R.menu.menu, menu)
         return super.onCreateOptionsMenu(menu)
     }
 
 
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if(item.itemId == R.id.logout){
+        if (item.itemId == R.id.logout) {
             mAuth.signOut()
-            val intent = Intent(this,CreateAccount::class.java)
+            val intent = Intent(this, CreateAccount::class.java)
             finish()
             startActivity(intent)
             return true
         }
         return true
     }
-
-
-
 
 
 }

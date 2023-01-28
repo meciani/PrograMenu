@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class ListaSpesaAdapter(val context : Context, val menuList: ArrayList<Menu>):
-    RecyclerView.Adapter<ListaSpesaAdapter.MenuViewHolder>(){
+class ListaSpesaAdapter(val context: Context, val menuList: ArrayList<Menu>) :
+    RecyclerView.Adapter<ListaSpesaAdapter.MenuViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MenuViewHolder {
-        val view : View = LayoutInflater.from(context).inflate(R.layout.layout_spesa,parent,false)
+        val view: View = LayoutInflater.from(context).inflate(R.layout.layout_spesa, parent, false)
         return MenuViewHolder(view)
     }
 
@@ -40,14 +40,14 @@ class ListaSpesaAdapter(val context : Context, val menuList: ArrayList<Menu>):
         return menuList.size
     }
 
-    class MenuViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+    class MenuViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         val txtTitolo = itemView.findViewById<TextView>(R.id.menu_nome_spesa)
         val txtIngredienti = itemView.findViewById<TextView>(R.id.menu_ingredienti_spesa)
 
 
-    }
 
+    }
 
 
 }
