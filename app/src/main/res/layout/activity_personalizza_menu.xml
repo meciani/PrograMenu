@@ -50,7 +50,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="53dp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:orientation="horizontal">
 
@@ -58,9 +58,9 @@
         <EditText
             android:id="@+id/etxt_pm_menu"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="200dp"
             android:hint="Crea il tuo menu"
-            android:inputType="text"
+            android:inputType="textMultiLine"
             android:layout_marginBottom="8dp" />
 
 
